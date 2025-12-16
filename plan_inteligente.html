@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Plan Inteligente Oso & Ponky</title>
+  <style>
+    :root { 
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; 
+      --accent: #4da6ff;
+      --success: #4ade80;
+      --warning: #fbbf24;
+      --danger: #ff4040;
+    }
+    * { box-sizing: border-box; }
+    body { 
+      margin: 0; 
+      background: linear-gradient(135deg, #0b0f14 0%, #1a1f2e 100%); 
+      color: #e9eef7; 
+      min-height: 100vh;
+    }
+    header { 
+      padding: 16px; 
+      position: sticky; 
+      top: 0; 
+      background: rgba(11,15,20,.95); 
+      backdrop-filter: blur(10px); 
+      border-bottom: 1px solid rgba(255,255,255,.08); 
+      z-index: 100; 
+    }
+    h1 { margin: 0 0 6px; font-size: 22px; font-weight: 700; }
+    .sub { opacity: .75; font-size: 12px; }
+    main { padding: 16px; max-width: 1200px; margin: 0 auto; }
+    .tabs { 
+      display: flex; 
+      gap: 8px; 
+      margin-bottom: 16px; 
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .tab-btn { 
+      background: transparent; 
+      border: none; 
+      color: #999; 
+      padding: 10px 14px; 
+      cursor: pointer; 
+      font-size: 13px; 
+      font-weight: 600;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+    .tab-btn.active { 
+      color: var(--accent); 
+      border-bottom-color: var(--accent);
+    }
+    .tab-btn:hover { color: #ccc; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .card { 
+      background: rgba(255,255,255,.06); 
+      border: 1px solid rgba(255,255,255,.10); 
+      border-radius: 16px; 
+      padding: 16px; 
+      margin-bottom: 16px;
+    }
+    .card h2 { 
+      margin: 0 0 12px; 
+      font-size: 16px; 
+      color: var(--accent);
+    }
+    .week-selector { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+      gap: 8px; 
+      margin-bottom: 16px;
+    }
+    .week-btn { 
+      background: rgba(255,255,255,.08); 
+      border: 1px solid rgba(255,255,255,.12); 
+      color: #e9eef7;
+      padding: 10px; 
+      border-radius: 10px; 
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .week-btn.active { 
+      background: var(--accent); 
+      border-color: var(--accent);
+      color: #000;
+    }
+    .week-btn:hover { background: rgba(255,255,255,.12); }
+    .objective { 
+      background: rgba(77,166,255,.1); 
+      border-left: 3px solid var(--accent);
+      padding: 12px 14px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .task { 
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 10px;
+      align-items: start;
+      padding: 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      margin-bottom: 10px;
+    }
+    .task.done { opacity: .6; }
+    .task.done .title { text-decoration: line-through; }
+    .task input[type="checkbox"] { cursor: pointer; }
+    .task-content { flex: 1; }
+    .title { font-weight: 600; margin-bottom: 3px; }
+    .desc { font-size: 12px; opacity: .75; margin: 3px 0 0; }
+    .tag { 
+      display: inline-block;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      margin-right: 6px;
+      margin-top: 4px;
+    }
+    .comments-section { 
+      background: rgba(255,255,255,.04);
+      border-radius: 12px;
+      padding: 12px;
+      margin-top: 12px;
+    }
+    .comment { 
+      background: rgba(0,0,0,.2);
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: 13px;
+      border-left: 3px solid var(--warning);
+    }
+    .comment .time { 
+      opacity: .6;
+      font-size: 11px;
+      margin-bottom: 4px;
+    }
+    textarea { 
+      width: 100%;
+      background: rgba(0,0,0,.3);
+      color: #e9eef7;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 10px;
+      padding: 10px;
+      font-size: 13px;
+      resize: vertical;
+      min-height: 60px;
+      font-family: inherit;
+    }
+    textarea::placeholder { opacity: .6; }
+    .btn { 
+      cursor: pointer; 
+      border: 1px solid rgba(255,255,255,.12); 
+      background: rgba(255,255,255,.08); 
+      color: #e9eef7; 
+      padding: 10px 14px; 
+      border-radius: 10px; 
+      font-weight: 600;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+    .btn:hover { background: rgba(255,255,255,.12); }
+    .btn.primary { background: var(--accent); color: #000; border-color: var(--accent); }
+    .btn.primary:hover { background: rgba(77,166,255,.8); }
+    .btn.success { background: var(--success); color: #000; border-color: var(--success); }
+    .btn.danger { background: var(--danger); border-color: var(--danger); }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .grid-full { grid-column: 1 / -1; }
+    .ai-suggestion { 
+      background: rgba(251,191,36,.1);
+      border: 1px solid rgba(251,191,36,.3);
+      border-radius: 12px;
+      padding: 12px;
+      margin: 12px 0;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .ai-suggestion h4 { margin: 0 0 8px; color: var(--warning); }
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: rgba(255,255,255,.1);
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 8px 0;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--success));
+      transition: width 0.3s;
+    }
+    .stat { 
+      display: inline-block;
+      padding: 8px 12px;
+      background: rgba(255,255,255,.08);
+      border-radius: 8px;
+      font-size: 12px;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+    .settings-group {
+      background: rgba(255,255,255,.04);
+      padding: 14px;
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
+    .settings-group label { display: block; margin: 8px 0 4px; font-size: 13px; font-weight: 600; }
+    input[type="text"], input[type="time"], select { 
+      width: 100%;
+      background: rgba(0,0,0,.3);
+      color: #e9eef7;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+    .hint { font-size: 11px; opacity: .7; margin-top: 4px; }
+    footer { 
+      padding: 12px; 
+      border-top: 1px solid rgba(255,255,255,.1); 
+      background: rgba(11,15,20,.92); 
+      text-align: center;
+      font-size: 12px;
+      opacity: .7;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>🐕 Plan Inteligente Oso & Ponky</h1>
+  <div class="sub">Plan personalizado con IA que se adapta a tus avances y comentarios.</div>
+</header>
+
+<main>
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="plan">📋 Plan Semanal</button>
+    <button class="tab-btn" data-tab="seguimiento">📊 Seguimiento</button>
+    <button class="tab-btn" data-tab="analisis">🤖 Análisis IA</button>
+    <button class="tab-btn" data-tab="ajustes">⚙️ Ajustes</button>
+  </div>
+
+  <!-- TAB 1: PLAN SEMANAL -->
+  <div id="plan" class="tab-content active">
+    <div class="week-selector" id="weekSelector"></div>
+    
+    <div id="weekContent"></div>
+
+    <div class="card">
+      <h2>📝 Comentarios de hoy</h2>
+      <textarea id="dailyComment" placeholder="Ej: Oso bajó mucho la reactividad hoy. Ponky se quedó tranquilo. Una vez acaparó un cartón pero lo corregí con éxito."></textarea>
+      <button class="btn primary grid-full" style="margin-top: 10px;" id="saveComment">💾 Guardar comentario</button>
+    </div>
+  </div>
+
+  <!-- TAB 2: SEGUIMIENTO -->
+  <div id="seguimiento" class="tab-content">
+    <div class="card">
+      <h2>📈 Tu progreso</h2>
+      <div id="progressOverview"></div>
+    </div>
+
+    <div class="card">
+      <h2>📅 Histórico de comentarios</h2>
+      <div id="commentHistory"></div>
+    </div>
+  </div>
+
+  <!-- TAB 3: ANÁLISIS IA -->
+  <div id="analisis" class="tab-content">
+    <div class="card">
+      <h2>🤖 Análisis Inteligente</h2>
+      <div class="hint">La IA analiza tus comentarios y ajusta recomendaciones.</div>
+      
+      <div style="margin: 16px 0;">
+        <label style="font-weight: 600;">Tu API Key de OpenAI (opcional)</label>
+        <input type="text" id="apiKey" placeholder="sk-..." />
+        <div class="hint">Sin esto, verás análisis locales. Con OpenAI, análisis más profundos.</div>
+      </div>
+
+      <button class="btn primary grid-full" id="analyzeBtn">Analizar ahora</button>
+
+      <div id="analysisResults" style="margin-top: 16px;"></div>
+    </div>
+  </div>
+
+  <!-- TAB 4: AJUSTES -->
+  <div id="ajustes" class="tab-content">
+    <div class="card">
+      <h2>⚙️ Configuración</h2>
+      
+      <div class="settings-group">
+        <label>Recordatorio diario</label>
+        <input type="time" id="reminderTime" />
+        <button class="btn" id="testReminder">Probar notificación</button>
+      </div>
+
+      <div class="settings-group">
+        <label>Datos</label>
+        <div class="grid2">
+          <button class="btn" id="exportData">📥 Exportar JSON</button>
+          <button class="btn danger" id="resetData">🗑️ Borrar todo</button>
+        </div>
+        <input type="file" id="importData" accept="application/json" style="margin-top: 8px;" />
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>Plan Oso & Ponky v2.0 | Datos guardados localmente | Hecho con ❤️ para Oso y Ponky</p>
+</footer>
+
+<script>
+  // ========== CONSTANTS & CONFIG ==========
+  const STORAGE_KEY = "oso_ponky_intelligent_v2";
+  const $ = (id) => document.getElementById(id);
+  const $$ = (sel) => document.querySelectorAll(sel);
+  
+  const PLAN_WEEKS = [
+    {
+      week: 1,
+      title: "Semana 1 — Bajar la base",
+      objective: "Que Oso deje de estar 'de turno' todo el día.",
+      tasks: [
+        { id: "w1t1", title: "Presencia sin disponibilidad (5–10 min)", tag: "Separación", desc: "Tú en otra pieza, puerta cerrada, sin hablar/mirar." },
+        { id: "w1t2", title: "Paseos cortos", tag: "Paseo", desc: "Sin buscar estímulos. Mejor volver aburridos." },
+        { id: "w1t3", title: "Observar sin intervenir", tag: "Observación", desc: "Si Oso se inquieta: observa, no corrijas." },
+      ]
+    },
+    {
+      week: 2,
+      title: "Semana 2 — Separación dosificada",
+      objective: "Romper la cadena Oso → Ponky.",
+      tasks: [
+        { id: "w2t1", title: "Micro-salidas (30–180 seg)", tag: "Separación", desc: "Salidas iguales: llaves, zapatos, sales. Vueltas neutras sin saludo." },
+        { id: "w2t2", title: "Asimetría de premios", tag: "Recursos", desc: "Ponky con kong; Oso sin premio especial." },
+        { id: "w2t3", title: "Paseo separado (una vez)", tag: "Paseo", desc: "Uno queda llorando; es terapéutico, no cruel." },
+      ]
+    },
+    {
+      week: 3,
+      title: "Semana 3 — Reactividad con control",
+      objective: "Que Oso delegue decisiones.",
+      tasks: [
+        { id: "w3t1", title: "Posición en paseo: Oso atrás", tag: "Reactividad", desc: "Ponky adelante, correas distintas." },
+        { id: "w3t2", title: "Giro 90° sin órdenes", tag: "Reactividad", desc: "Si aparece gato: giro silencioso, cero premios." },
+        { id: "w3t3", title: "Juegos tranquilos", tag: "Calma", desc: "Olfato, no persecución." },
+      ]
+    },
+    {
+      week: 4,
+      title: "Semana 4 — Integración",
+      objective: "Que funcionen juntos sin escalarse.",
+      tasks: [
+        { id: "w4t1", title: "Paseos más largos (5–10 min)", tag: "Paseo", desc: "Menos sincronía entre ellos." },
+        { id: "w4t2", title: "Manejo de recursos", tag: "Recursos", desc: "Comida/juguetes separados. Si Oso acapara: interrupción." },
+        { id: "w4t3", title: "Salidas más largas", tag: "Separación", desc: "Mantén asimetría de premios." },
+      ]
+    }
+  ];
+
+  // ========== STATE ==========
+  let state = {
+    currentWeek: 1,
+    weekProgress: {}, // { weekNum: { taskId: bool } }
+    dailyComments: {}, // { "YYYY-MM-DD": [ { text, timestamp } ] }
+    reminderTime: "20:30",
+    apiKey: "",
+  };
+
+  function load() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+      if (saved) state = { ...state, ...saved };
+    } catch (e) { console.log("First run"); }
+  }
+
+  function save() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
+
+  // ========== HELPERS ==========
+  const today = () => new Date().toISOString().slice(0, 10);
+  const fmtTime = (d = new Date()) => d.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" });
+
+  // ========== TAB SYSTEM ==========
+  $$(".tab-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const tabName = btn.dataset.tab;
+      $$(".tab-btn").forEach(b => b.classList.remove("active"));
+      $$(".tab-content").forEach(c => c.classList.remove("active"));
+      btn.classList.add("active");
+      $(`${tabName}`).classList.add("active");
+    });
+  });
+
+  // ========== RENDER WEEK SELECTOR ==========
+  function renderWeekSelector() {
+    const container = $("weekSelector");
+    container.innerHTML = "";
+    PLAN_WEEKS.forEach(w => {
+      const btn = document.createElement("button");
+      btn.className = `week-btn ${w.week === state.currentWeek ? "active" : ""}`;
+      btn.textContent = `Semana ${w.week}`;
+      btn.addEventListener("click", () => {
+        state.currentWeek = w.week;
+        save();
+        renderWeekContent();
+        renderWeekSelector();
+      });
+      container.appendChild(btn);
+    });
+  }
+
+  // ========== RENDER WEEK CONTENT ==========
+  function renderWeekContent() {
+    const week = PLAN_WEEKS.find(w => w.week === state.currentWeek);
+    if (!week) return;
+
+    const container = $("weekContent");
+    container.innerHTML = `
+      <div class="card">
+        <h2>Semana ${week.week}: ${week.title}</h2>
+        <div class="objective">
+          <strong>🎯 Objetivo:</strong> ${week.objective}
+        </div>
+        <div id="taskList"></div>
+      </div>
+    `;
+
+    const taskContainer = container.querySelector("#taskList");
+    week.tasks.forEach(task => {
+      const done = state.weekProgress[week.week]?.[task.id] || false;
+      const taskEl = document.createElement("div");
+      taskEl.className = `task ${done ? "done" : ""}`;
+      taskEl.innerHTML = `
+        <input type="checkbox" ${done ? "checked" : ""} />
+        <div class="task-content">
+          <div class="title">${task.title}</div>
+          <div class="desc">${task.desc}</div>
+          <span class="tag">${task.tag}</span>
+        </div>
+      `;
+      const cb = taskEl.querySelector("input");
+      cb.addEventListener("change", () => {
+        if (!state.weekProgress[week.week]) state.weekProgress[week.week] = {};
+        state.weekProgress[week.week][task.id] = cb.checked;
+        save();
+        renderWeekContent();
+      });
+      taskContainer.appendChild(taskEl);
+    });
+
+    // Load today's comment
+    const todayComments = state.dailyComments[today()] || [];
+    const lastComment = todayComments[todayComments.length - 1]?.text || "";
+    $("dailyComment").value = lastComment;
+  }
+
+  // ========== COMMENTS ==========
+  $("saveComment").addEventListener("click", () => {
+    const text = $("dailyComment").value.trim();
+    if (!text) return alert("Escribe un comentario primero.");
+    
+    if (!state.dailyComments[today()]) state.dailyComments[today()] = [];
+    state.dailyComments[today()].push({
+      text,
+      timestamp: fmtTime(),
+      weekNum: state.currentWeek,
+    });
+    save();
+    alert("Comentario guardado. ¡Gracias por actualizar el plan!");
+    $("dailyComment").value = "";
+  });
+
+  // ========== PROGRESS & HISTORY ==========
+  function renderProgress() {
+    const container = $("progressOverview");
+    container.innerHTML = "";
+
+    let totalTasks = 0, completedTasks = 0;
+    PLAN_WEEKS.forEach(w => {
+      const done = Object.values(state.weekProgress[w.week] || {}).filter(x => x).length;
+      const total = w.tasks.length;
+      totalTasks += total;
+      completedTasks += done;
+      const pct = total ? Math.round((done / total) * 100) : 0;
+      container.innerHTML += `
+        <div style="margin-bottom: 12px;">
+          <strong>Semana ${w.week}:</strong> ${done}/${total} (${pct}%)
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: ${pct}%"></div>
+          </div>
+        </div>
+      `;
+    });
+
+    const totalPct = totalTasks ? Math.round((completedTasks / totalTasks) * 100) : 0;
+    container.innerHTML = `
+      <div style="margin-bottom: 16px; padding: 12px; background: rgba(77,166,255,.15); border-radius: 10px;">
+        <div style="font-size: 14px; font-weight: 600;">Total: ${completedTasks}/${totalTasks} tareas (${totalPct}%)</div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: ${totalPct}%"></div>
+        </div>
+      </div>
+    ` + container.innerHTML;
+  }
+
+  function renderCommentHistory() {
+    const container = $("commentHistory");
+    const allComments = [];
+    
+    for (const [dateStr, comments] of Object.entries(state.dailyComments)) {
+      comments.forEach(c => allComments.push({ date: dateStr, ...c }));
+    }
+
+    if (!allComments.length) {
+      container.innerHTML = '<div class="hint">Sin comentarios todavía.</div>';
+      return;
+    }
+
+    allComments.sort((a, b) => b.date.localeCompare(a.date));
+    container.innerHTML = allComments.map(c => `
+      <div class="comment">
+        <div class="time">📅 ${c.date} a las ${c.timestamp} | Semana ${c.weekNum}</div>
+        <div>${escapeHtml(c.text)}</div>
+      </div>
+    `).join("");
+  }
+
+  // ========== AI ANALYSIS ==========
+  $("analyzeBtn").addEventListener("click", async () => {
+    const apiKey = $("apiKey").value.trim();
+    const results = $("analysisResults");
+    results.innerHTML = '<div class="hint">Analizando...</div>';
+
+    const allComments = [];
+    for (const [date, comments] of Object.entries(state.dailyComments)) {
+      comments.forEach(c => allComments.push(c.text));
+    }
+
+    if (!allComments.length) {
+      results.innerHTML = '<div class="hint">Necesitas comentarios para analizar.</div>';
+      return;
+    }
+
+    if (apiKey && apiKey.startsWith("sk-")) {
+      // Use OpenAI
+      try {
+        const response = await fetch("https://api.openai.com/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "Authorization": `Bearer ${apiKey}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            model: "gpt-4o-mini",
+            messages: [{
+              role: "user",
+              content: `Eres un especialista en comportamiento canino. Analiza estos comentarios del entrenamiento de Oso y Ponky:
+
+COMENTARIOS:
+${allComments.map((c, i) => `${i + 1}. "${c}"`).join("\n")}
+
+Proporciona:
+1. Progreso observado (2-3 puntos principales)
+2. Patrones clave (qué está funcionando)
+3. Ajustes recomendados para próxima semana
+4. Señales de alerta (si las hay)
+
+Sé conciso, directo y práctico.`
+            }],
+            temperature: 0.7,
+            max_tokens: 500,
+          })
+        });
+
+        if (!response.ok) throw new Error("API error");
+        const data = await response.json();
+        const analysis = data.choices[0].message.content;
+        
+        results.innerHTML = `
+          <div class="ai-suggestion">
+            <h4>📊 Análisis por IA (OpenAI)</h4>
+            <p>${escapeHtml(analysis).replace(/\n/g, "<br>")}</p>
+          </div>
+        `;
+        
+        // Save the analysis
+        state.lastAnalysis = { date: today(), text: analysis };
+        save();
+
+      } catch (e) {
+        results.innerHTML = `<div class="ai-suggestion" style="border-color: var(--danger); background: rgba(255,64,64,.1);">
+          <h4>❌ Error</h4>
+          <p>${escapeHtml(e.message)}</p>
+        </div>`;
+      }
+    } else {
+      // Local analysis (heuristic-based)
+      const analysis = analyzeLocally(allComments);
+      results.innerHTML = `
+        <div class="ai-suggestion">
+          <h4>🔍 Análisis Local (sin IA)</h4>
+          <p>${analysis}</p>
+        </div>
+      `;
+    }
+  });
+
+  function analyzeLocally(comments) {
+    const text = comments.join(" ").toLowerCase();
+    let insights = [];
+
+    if (text.includes("oso")) insights.push("✅ Mencionaste a Oso: parece ser el centro del entrenamiento.");
+    if (text.includes("ponky")) insights.push("✅ Mencionaste a Ponky: buena observación de ambos perros.");
+    if (text.includes("reactividad") || text.includes("gato")) insights.push("🎯 Trabajaste reactividad: sigue enfocado en giro de 90°.");
+    if (text.includes("acapar") || text.includes("comida")) insights.push("⚠️ Control de recursos: mantén separaciones claras.");
+    if (text.includes("mejorar") || text.includes("mejor")) insights.push("📈 Observas mejoras: sigue la estructura del plan.");
+    if (text.includes("difícil") || text.includes("problema")) insights.push("💪 Hay desafíos: normal, ajusta ritmo de entrenamiento.");
+
+    return insights.length ? insights.join("<br>") : "Sigue registrando comentarios para obtener insights.";
+  }
+
+  $("testReminder").addEventListener("click", async () => {
+    if ("Notification" in window) {
+      const perm = await Notification.requestPermission();
+      if (perm === "granted") {
+        new Notification("Plan Oso & Ponky", { body: "¡Es hora de registrar tu avance!" });
+      }
+    }
+  });
+
+  // ========== SETTINGS ==========
+  $("reminderTime").addEventListener("change", () => {
+    state.reminderTime = $("reminderTime").value;
+    save();
+  });
+
+  $("exportData").addEventListener("click", () => {
+    const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = `plan_oso_ponky_${today()}.json`;
+    a.click();
+  });
+
+  $("resetData").addEventListener("click", () => {
+    if (confirm("¿Borrar TODO? (no se puede deshacer)")) {
+      state = { currentWeek: 1, weekProgress: {}, dailyComments: {}, reminderTime: "20:30", apiKey: "" };
+      save();
+      location.reload();
+    }
+  });
+
+  $("importData").addEventListener("change", async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const text = await file.text();
+    try {
+      state = JSON.parse(text);
+      save();
+      alert("Datos importados. Recargando...");
+      location.reload();
+    } catch (e) {
+      alert("Archivo inválido.");
+    }
+  });
+
+  // ========== UTILITIES ==========
+  function escapeHtml(s) {
+    return (s || "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  }
+
+  // ========== INIT ==========
+  load();
+  renderWeekSelector();
+  renderWeekContent();
+  $("reminderTime").value = state.reminderTime;
+
+  // Re-render cuando se abre seguimiento
+  document.querySelectorAll("[data-tab]").forEach(btn => {
+    if (btn.dataset.tab === "seguimiento") {
+      btn.addEventListener("click", () => {
+        setTimeout(() => {
+          renderProgress();
+          renderCommentHistory();
+        }, 0);
+      });
+    }
+  });
+
+  // Load API key if saved
+  if (state.apiKey) $("apiKey").value = state.apiKey;
+  $("apiKey").addEventListener("change", () => {
+    state.apiKey = $("apiKey").value;
+    save();
+  });
+
+</script>
+</body>
+</html>

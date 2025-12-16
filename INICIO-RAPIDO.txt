@@ -1,0 +1,184 @@
+╔════════════════════════════════════════════════════════════════╗
+║          PLAN OSO & PONKY - INICIO RÁPIDO                      ║
+║          App con IA Adaptativa (4 Semanas)                     ║
+╚════════════════════════════════════════════════════════════════╝
+
+📱 INSTALAR EN TU CELULAR (3 MINUTOS)
+───────────────────────────────────────────────────────────────
+
+Opción A - Directo (sin internet):
+  1. Copia carpeta "plan-oso-ponky" a tu celular
+  2. Abre "index.html" con Chrome
+  3. Menú ⋮ → "Agregar a pantalla principal"
+
+Opción B - GitHub Pages (recomendado):
+  Ver archivo: GITHUB-PAGES-PASO-A-PASO.md
+
+
+🚀 PRIMER USO (5 MINUTOS)
+───────────────────────────────────────────────────────────────
+
+1. Abre la app
+2. Click "📚 Cargar plan completo" (botón grande abajo)
+3. Lee el objetivo de la Semana 1
+4. Empieza con la primera tarea
+
+
+💬 USO DIARIO (10 MINUTOS)
+───────────────────────────────────────────────────────────────
+
+Para cada tarea:
+  ✅ Marca checkbox cuando completes
+  💬 Agrega comentario (IMPORTANTE para análisis IA):
+     - ¿Cómo reaccionó Oso?
+     - ¿Ponky estuvo tranquilo?
+     - ¿Hubo conflictos?
+     - ¿Qué fue difícil?
+
+Ejemplos de buenos comentarios:
+  ✓ "Oso se inquietó al salir pero se calmó en 2 min"
+  ✓ "Ponky comió tranquilo, Oso no lo desplazó"
+  ✓ "Giro 90° funcionó, Oso no ladró al gato"
+  ✗ "Bien" (muy genérico)
+  ✗ "Hecho" (sin información)
+
+
+📝 AL FINAL DE CADA SEMANA
+───────────────────────────────────────────────────────────────
+
+1. Escribe revisión semanal (sección 📝 arriba):
+   - ¿Qué mejoró?
+   - ¿Qué sigue trabado?
+   - ¿Oso controla menos? ¿Ponky tiene menos miedo?
+
+2. Click "🤖 Analizar con IA" (o es automático)
+
+3. Lee las sugerencias de la IA
+
+4. Click "✅ Completar semana" para avanzar
+
+
+🤖 ACTIVAR ANÁLISIS IA (OPCIONAL)
+───────────────────────────────────────────────────────────────
+
+Sin IA: Funciona perfectamente, análisis local básico
+Con IA: Sugerencias personalizadas inteligentes
+
+Para activar:
+  1. Ve a: Configuración (⚙️ Ajustes)
+  2. Obtén clave API gratis: https://console.anthropic.com
+  3. Pega tu clave
+  4. Elige modelo: Claude 3.5 Sonnet (mejor) o Haiku (rápido)
+  5. Frecuencia: Semanal (recomendado) o Diario o Manual
+
+Costo: ~$0.01-0.05 USD por análisis
+
+
+📅 ESTRUCTURA DE LAS 4 SEMANAS
+───────────────────────────────────────────────────────────────
+
+Semana 1: Bajar la base
+  → Reducir activación de Oso, desacoplar a Ponky
+  → Foco: Presencia sin disponibilidad, paseos calmados
+
+Semana 2: Separación dosificada
+  → Romper cadena Oso → Ponky
+  → Foco: Micro-salidas, asimetría premios, comida separada
+
+Semana 3: Reactividad + recursos
+  → Oso delega decisiones, deja de controlar
+  → Foco: Giro 90°, intervención activa, protección de Ponky
+
+Semana 4: Integración
+  → Consolidar todo lo aprendido
+  → Foco: Paseos juntos, reintroducir juguetes, evaluación
+
+
+⚠️  IMPORTANTE: CONTROL DE RECURSOS
+───────────────────────────────────────────────────────────────
+
+Si Oso sigue quitando comida/juguetes a Ponky:
+  ✅ Semana 2: Comida SIEMPRE separada (no negociable)
+  ✅ Semana 3: Intervención inmediata + Oso pierde acceso
+  ✅ Semana 4: NO reintroducir juguetes hasta resolver
+
+Si hay agresividad real, miedo extremo, o conflictos físicos:
+  → DETÉN el plan
+  → Consulta etólogo/veterinario profesional
+
+
+📤 EXPORTAR DATOS (RECOMENDADO)
+───────────────────────────────────────────────────────────────
+
+Click "📤 Exportar datos" cada semana
+  → Guarda backup JSON completo
+  → Útil para: cambiar de celular, compartir con vet/etólogo
+
+
+📚 DOCUMENTACIÓN COMPLETA
+───────────────────────────────────────────────────────────────
+
+  INSTRUCCIONES.html ............. Guía visual de instalación
+  README.md ...................... Documentación completa
+  GITHUB-PAGES-PASO-A-PASO.md .... Tutorial GitHub Pages
+  RESUMEN-FINAL.md ............... Resumen de funcionalidades
+
+
+🎯 CONSEJOS CLAVE
+───────────────────────────────────────────────────────────────
+
+  1. Consistencia > Perfección
+     → Mejor 70% todos los días que 100% un día
+
+  2. Comenta TODO
+     → Mientras más escribas, mejor análisis recibirás
+
+  3. Sé honesto
+     → La IA no juzga, te ayuda
+
+  4. Confía en el proceso
+     → Retrocesos en semana 3-4 son normales
+
+  5. Exporta semanalmente
+     → No pierdas tu progreso
+
+
+🔒 PRIVACIDAD
+───────────────────────────────────────────────────────────────
+
+  ✅ Todo se guarda en tu celular (localStorage)
+  ✅ Sin servidores propios
+  ✅ Funciona 100% offline (después de instalar)
+  ✅ Tu API key nunca se comparte
+
+
+📦 ARCHIVOS INCLUIDOS
+───────────────────────────────────────────────────────────────
+
+  index.html ..................... App principal
+  app.js ......................... Lógica + IA
+  manifest.json .................. Config PWA
+  sw.js .......................... Service worker
+  icon-192.png, icon-512.png ..... Íconos
+  README.md ...................... Docs completa
+  INSTRUCCIONES.html ............. Guía visual
+  GITHUB-PAGES-PASO-A-PASO.md .... Tutorial GitHub
+  RESUMEN-FINAL.md ............... Resumen
+  INICIO-RAPIDO.txt .............. Este archivo
+
+
+🚀 EMPIEZA AHORA
+───────────────────────────────────────────────────────────────
+
+  1. Abre INSTRUCCIONES.html (doble click)
+  2. Sigue los pasos de instalación
+  3. Carga el plan completo
+  4. Empieza con Semana 1
+
+¡Oso y Ponky te están esperando! 🐕🐕
+
+Consistencia > Perfección
+Los pequeños cambios sostenidos son más poderosos
+que los grandes esfuerzos esporádicos.
+
+═══════════════════════════════════════════════════════════════
