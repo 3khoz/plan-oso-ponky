@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Instrucciones - Plan Oso & Ponky</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f5f5f5;
+      color: #222;
+      line-height: 1.6;
+    }
+    h1 {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 30px 20px;
+      border-radius: 12px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .step {
+      background: white;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .step h2 {
+      color: #667eea;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .num {
+      background: #667eea;
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    code {
+      background: #f0f0f0;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: "Courier New", monospace;
+      font-size: 14px;
+    }
+    .btn {
+      display: inline-block;
+      background: #667eea;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 10px 5px;
+    }
+    .btn:hover {
+      background: #5568d3;
+    }
+    .alert {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 4px;
+    }
+    .success {
+      background: #d4edda;
+      border-left: 4px solid #28a745;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 4px;
+    }
+    ul {
+      line-height: 1.8;
+    }
+    .option {
+      background: #f8f9fa;
+      border: 2px solid #dee2e6;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 8px;
+    }
+    .option h3 {
+      margin-top: 0;
+      color: #495057;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🐕🐕 Plan Oso & Ponky<br>Guía de Instalación</h1>
+
+<div class="success">
+  <strong>✅ Archivos listos!</strong><br>
+  Tu app está completamente preparada. Solo elige cómo quieres instalarla.
+</div>
+
+<h2 style="margin-top: 40px; color: #667eea;">Elige tu método de instalación:</h2>
+
+<div class="option">
+  <h3>📱 Opción A: Instalación directa (más rápido, sin internet)</h3>
+  <p><strong>Ideal si:</strong> Solo quieres usarla en un celular y no necesitas accederla desde otros dispositivos.</p>
+
+  <ol>
+    <li>Conecta tu celular Android al computador con cable USB</li>
+    <li>Copia toda la carpeta <code>plan-oso-ponky</code> a tu celular (en Descargas o donde prefieras)</li>
+    <li>En tu celular, abre <strong>Chrome</strong></li>
+    <li>Busca y abre el archivo <code>index.html</code></li>
+    <li>Toca el menú ⋮ (arriba derecha) → <strong>"Agregar a pantalla principal"</strong></li>
+    <li>Dale un nombre (ej: "Oso & Ponky") → <strong>Agregar</strong></li>
+  </ol>
+
+  <div class="success">
+    ✓ Listo! Ahora tienes un ícono en tu pantalla principal que abre la app como si fuera nativa.
+  </div>
+</div>
+
+<div class="option">
+  <h3>🌐 Opción B: Publicar en GitHub Pages (recomendado)</h3>
+  <p><strong>Ideal si:</strong> Quieres acceder desde cualquier dispositivo, tener un enlace permanente, o compartir con alguien más.</p>
+
+  <div class="step">
+    <h2><span class="num">1</span> Crear cuenta en GitHub</h2>
+    <p>Si ya tienes cuenta, salta este paso.</p>
+    <ul>
+      <li>Ve a <a href="https://github.com" target="_blank">github.com</a></li>
+      <li>Click en <strong>Sign up</strong></li>
+      <li>Completa el registro (gratis, sin tarjeta)</li>
+      <li>Verifica tu email</li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <h2><span class="num">2</span> Crear repositorio</h2>
+    <ul>
+      <li>Una vez dentro de GitHub, click en el <strong>+</strong> (arriba derecha) → <strong>New repository</strong></li>
+      <li><strong>Repository name:</strong> <code>plan-oso-ponky</code></li>
+      <li>Marca <strong>Public</strong> (importante)</li>
+      <li>NO marques "Add a README"</li>
+      <li>Click <strong>Create repository</strong></li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <h2><span class="num">3</span> Subir archivos</h2>
+    <ul>
+      <li>Verás una página con opciones. Click en <strong>"uploading an existing file"</strong></li>
+      <li>Arrastra TODOS los archivos de la carpeta <code>plan-oso-ponky</code>:
+        <ul>
+          <li>✓ index.html</li>
+          <li>✓ manifest.json</li>
+          <li>✓ sw.js</li>
+          <li>✓ icon-192.png</li>
+          <li>✓ icon-512.png</li>
+          <li>✓ README.md (opcional)</li>
+        </ul>
+      </li>
+      <li>Abajo en "Commit changes" escribe: <code>Primera versión</code></li>
+      <li>Click <strong>Commit changes</strong></li>
+    </ul>
+
+    <div class="alert">
+      ⚠️ <strong>Importante:</strong> NO subas los archivos dentro de una carpeta. Deben estar en la raíz del repositorio.
+    </div>
+  </div>
+
+  <div class="step">
+    <h2><span class="num">4</span> Activar GitHub Pages</h2>
+    <p>Aquí es donde GitHub convierte tu repositorio en un sitio web.</p>
+
+    <ul>
+      <li>En tu repositorio, click en <strong>Settings</strong> (arriba, última pestaña)</li>
+      <li>En el menú de la izquierda, busca y click en <strong>Pages</strong></li>
+      <li>En "Build and deployment" → <strong>Source</strong>:</li>
+      <li>Selecciona <strong>Deploy from a branch</strong></li>
+      <li>En <strong>Branch</strong>: elige <code>main</code> (o <code>master</code>)</li>
+      <li>En <strong>Folder</strong>: elige <code>/ (root)</code></li>
+      <li>Click <strong>Save</strong></li>
+    </ul>
+
+    <div class="success">
+      ⏱️ Espera 30-60 segundos. GitHub mostrará un mensaje:<br>
+      <strong>"Your site is published at https://TU-USUARIO.github.io/plan-oso-ponky/"</strong>
+    </div>
+  </div>
+
+  <div class="step">
+    <h2><span class="num">5</span> Instalar en tu celular</h2>
+    <ul>
+      <li>En tu celular, abre <strong>Chrome</strong></li>
+      <li>Ve a la URL: <code>https://TU-USUARIO.github.io/plan-oso-ponky/</code></li>
+      <li>La app se cargará (dale unos segundos)</li>
+      <li>Menú ⋮ → <strong>"Agregar a pantalla principal"</strong></li>
+      <li>Toca <strong>Instalar</strong> o <strong>Agregar</strong></li>
+    </ul>
+
+    <div class="success">
+      ✓ Ahora puedes cerrar Chrome. La app aparece en tu pantalla principal como app independiente.
+    </div>
+  </div>
+</div>
+
+<h2 style="margin-top: 40px; color: #667eea;">🎨 Personalizar con fotos de Oso y Ponky</h2>
+
+<div class="step">
+  <h2>Agregar fotos reales (opcional)</h2>
+
+  <p>Actualmente la app usa emojis 🐕. Si quieres poner fotos reales o caricaturas:</p>
+
+  <ol>
+    <li><strong>Prepara las fotos:</strong>
+      <ul>
+        <li>Toma/edita fotos cuadradas de Oso y Ponky (preferiblemente 400x400 o más)</li>
+        <li>Guárdalas como: <code>oso.jpg</code> y <code>ponky.jpg</code></li>
+      </ul>
+    </li>
+
+    <li><strong>Súbelas al repositorio</strong> (si usas GitHub Pages):
+      <ul>
+        <li>Ve a tu repo en GitHub</li>
+        <li>Click <strong>Add file</strong> → <strong>Upload files</strong></li>
+        <li>Arrastra <code>oso.jpg</code> y <code>ponky.jpg</code></li>
+        <li>Commit changes</li>
+      </ul>
+    </li>
+
+    <li><strong>Edita index.html:</strong>
+      <ul>
+        <li>En GitHub, abre <code>index.html</code></li>
+        <li>Click en el lápiz ✏️ (Edit)</li>
+        <li>Busca (Ctrl+F): <code>id="oso-avatar"</code></li>
+        <li>Cambia esta línea:<br>
+          <code>&lt;div class="pet-avatar" id="oso-avatar"&gt;🐕&lt;/div&gt;</code><br>
+          Por:<br>
+          <code>&lt;img src="oso.jpg" class="pet-avatar" alt="Oso" /&gt;</code>
+        </li>
+        <li>Haz lo mismo con <code>id="ponky-avatar"</code> usando <code>ponky.jpg</code></li>
+        <li>Click <strong>Commit changes</strong></li>
+      </ul>
+    </li>
+  </ol>
+
+  <div class="alert">
+    💡 <strong>Tip:</strong> Usa herramientas como Canva, Remove.bg o AI image generators para crear versiones cartoon/caricatura de tus mascotas.
+  </div>
+</div>
+
+<h2 style="margin-top: 40px; color: #667eea;">⚙️ Configurar recordatorios</h2>
+
+<div class="step">
+  <h2>Para que funcionen bien los recordatorios:</h2>
+
+  <p><strong>Opción 1: Notificaciones del navegador</strong> (requiere app abierta)</p>
+  <ul>
+    <li>Abre la app</li>
+    <li>Toca "Gestión" → "Recordatorios"</li>
+    <li>Elige la hora</li>
+    <li>Toca "Activar notifs"</li>
+    <li>Acepta los permisos</li>
+  </ul>
+  <div class="alert">
+    ⚠️ Solo funciona si la app está abierta o en segundo plano reciente.
+  </div>
+
+  <p><strong>Opción 2: Google Calendar</strong> (recomendado, siempre funciona)</p>
+  <ul>
+    <li>En la app: "Gestión" → "Recordatorios" → "Descargar para calendario"</li>
+    <li>Se descarga un archivo <code>.ics</code></li>
+    <li>Ábrelo desde tu celular</li>
+    <li>Importa a Google Calendar</li>
+    <li>Configura las alertas como prefieras (10 min antes, etc.)</li>
+  </ul>
+  <div class="success">
+    ✓ Este método funciona aunque la app esté cerrada completamente.
+  </div>
+</div>
+
+<h2 style="margin-top: 40px; color: #667eea;">📊 Cómo usar la app</h2>
+
+<div class="step">
+  <h2>Primer uso:</h2>
+  <ol>
+    <li>Abre la app</li>
+    <li>Toca <strong>"Cargar plan completo"</strong> (botón grande abajo)</li>
+    <li>Esto carga todas las tareas del plan diseñado para Oso y Ponky</li>
+    <li>Marca las tareas que completes cada día</li>
+    <li>Escribe notas sobre gatillos, progresos, conflictos</li>
+  </ol>
+
+  <h2 style="margin-top: 30px;">Cada día:</h2>
+  <ul>
+    <li>✅ Marca tareas completadas</li>
+    <li>📝 Anota en "Notas del día" cualquier observación importante</li>
+    <li>🔥 Mantén la racha (60% o más completado = día válido)</li>
+    <li>📅 Observa en qué semana vas (Semana 1-4 tienen enfoques diferentes)</li>
+  </ul>
+
+  <h2 style="margin-top: 30px;">Gestión:</h2>
+  <ul>
+    <li><strong>+ Agregar tarea:</strong> Crea tareas personalizadas</li>
+    <li><strong>🗑️ en cada tarea:</strong> Eliminar si ya no es necesaria</li>
+    <li><strong>📤 Exportar:</strong> Guarda backup en formato JSON</li>
+    <li><strong>🗑️ Borrar todo:</strong> Reinicia completamente (úsalo con cuidado)</li>
+  </ul>
+</div>
+
+<div class="success" style="margin-top: 40px; padding: 30px; text-align: center;">
+  <h2 style="margin: 0 0 10px;">🎉 ¡Todo listo!</h2>
+  <p style="margin: 0; font-size: 18px;">
+    Tu app está preparada para ayudarte con Oso y Ponky.<br>
+    Consistencia > Perfección 💪
+  </p>
+</div>
+
+<div style="text-align: center; margin: 40px 0; padding-bottom: 40px;">
+  <a href="index.html" class="btn">🚀 Abrir la app</a>
+  <a href="README.md" class="btn" style="background: #6c757d;">📖 Leer documentación completa</a>
+</div>
+
+</body>
+</html>

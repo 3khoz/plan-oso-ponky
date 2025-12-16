@@ -1,0 +1,942 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Plan de entrenamiento para Oso y Ponky" />
+  <meta name="theme-color" content="#0b0f14" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="icon-192.png" />
+  <title>Plan Oso & Ponky</title>
+  <style>
+    :root {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      --primary: #50a0ff;
+      --danger: #ff5050;
+      --bg: #0b0f14;
+      --card: rgba(255,255,255,.06);
+      --border: rgba(255,255,255,.10);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: #e9eef7;
+      padding-bottom: 80px;
+    }
+
+    /* Header con fotos */
+    header {
+      padding: 20px 16px;
+      background: linear-gradient(135deg, rgba(80,160,255,.15), rgba(255,80,255,.1));
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    .pets-header {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+    .pet-card {
+      text-align: center;
+    }
+    .pet-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid var(--primary);
+      object-fit: cover;
+      background: rgba(255,255,255,.1);
+      font-size: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 8px;
+    }
+    .pet-name {
+      font-weight: 700;
+      font-size: 14px;
+      margin: 0;
+    }
+    .pet-role {
+      font-size: 11px;
+      opacity: .7;
+      margin: 2px 0 0;
+    }
+
+    h1 {
+      margin: 10px 0 5px;
+      font-size: 22px;
+      font-weight: 800;
+    }
+    .subtitle {
+      opacity: .8;
+      font-size: 13px;
+      line-height: 1.4;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    main {
+      padding: 16px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+    }
+    .stat-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--primary);
+      display: block;
+    }
+    .stat-label {
+      font-size: 12px;
+      opacity: .75;
+      margin-top: 4px;
+    }
+
+    .section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+    .section h2 {
+      margin: 0 0 14px;
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .task {
+      display: grid;
+      grid-template-columns: 28px 1fr auto;
+      gap: 12px;
+      align-items: start;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,.2);
+      margin-bottom: 10px;
+      transition: all .2s;
+    }
+    .task:hover {
+      background: rgba(0,0,0,.3);
+    }
+    .task.done {
+      opacity: .55;
+    }
+    .task.done .task-title {
+      text-decoration: line-through;
+    }
+
+    input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      margin-top: 2px;
+    }
+
+    .task-content {
+      flex: 1;
+    }
+    .task-title {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+    .task-desc {
+      font-size: 12px;
+      opacity: .75;
+      line-height: 1.4;
+      margin-top: 6px;
+    }
+    .task-meta {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .tag {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.08);
+      text-transform: uppercase;
+      letter-spacing: .3px;
+    }
+    .tag.separacion { background: rgba(80,160,255,.2); border-color: rgba(80,160,255,.3); }
+    .tag.reactividad { background: rgba(255,120,80,.2); border-color: rgba(255,120,80,.3); }
+    .tag.recursos { background: rgba(255,200,80,.2); border-color: rgba(255,200,80,.3); }
+    .tag.paseo { background: rgba(80,200,120,.2); border-color: rgba(80,200,120,.3); }
+    .tag.calma { background: rgba(150,120,255,.2); border-color: rgba(150,120,255,.3); }
+
+    .btn {
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.08);
+      color: #e9eef7;
+      padding: 11px 16px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all .2s;
+      width: 100%;
+      font-family: inherit;
+    }
+    .btn:hover {
+      background: rgba(255,255,255,.14);
+      transform: translateY(-1px);
+    }
+    .btn:active {
+      transform: translateY(0);
+    }
+    .btn.small {
+      padding: 6px 10px;
+      font-size: 12px;
+      width: auto;
+    }
+    .btn.danger {
+      background: rgba(255,80,80,.15);
+      border-color: rgba(255,80,80,.3);
+    }
+    .btn.danger:hover {
+      background: rgba(255,80,80,.25);
+    }
+    .btn.primary {
+      background: rgba(80,160,255,.25);
+      border-color: rgba(80,160,255,.4);
+      font-weight: 700;
+    }
+    .btn.primary:hover {
+      background: rgba(80,160,255,.35);
+    }
+
+    .grid {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+    label {
+      font-size: 12px;
+      font-weight: 600;
+      opacity: .9;
+      display: block;
+      margin-bottom: 6px;
+    }
+    input, select, textarea {
+      width: 100%;
+      background: rgba(0,0,0,.3);
+      color: #e9eef7;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 11px 12px;
+      font-family: inherit;
+      font-size: 14px;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    .hint {
+      font-size: 12px;
+      opacity: .65;
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    footer {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 12px;
+      border-top: 1px solid var(--border);
+      background: rgba(11,15,20,.95);
+      backdrop-filter: blur(12px);
+    }
+    .footer-btns {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      gap: 10px;
+    }
+    .footer-btns .btn {
+      flex: 1;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,.85);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal.active {
+      display: flex;
+    }
+    .modal-content {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      max-width: 500px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .modal-header h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #e9eef7;
+      padding: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+    }
+    .modal-close:hover {
+      background: rgba(255,255,255,.1);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      opacity: .6;
+    }
+    .empty-state-icon {
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="pets-header">
+    <div class="pet-card">
+      <div class="pet-avatar" id="oso-avatar">🐕</div>
+      <p class="pet-name">Oso</p>
+      <p class="pet-role">El regulador</p>
+    </div>
+    <div class="pet-card">
+      <div class="pet-avatar" id="ponky-avatar">🐕</div>
+      <p class="pet-name">Ponky</p>
+      <p class="pet-role">El sensible</p>
+    </div>
+  </div>
+  <h1>Plan Oso & Ponky</h1>
+  <p class="subtitle">Plan de entrenamiento diario para reducir ansiedad por separación y reactividad</p>
+</header>
+
+<main>
+  <div class="stats">
+    <div class="stat-card">
+      <span class="stat-value" id="streak">0</span>
+      <div class="stat-label">🔥 Días seguidos</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value" id="pct">0%</span>
+      <div class="stat-label">✅ Completado hoy</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value" id="weekCount">0</span>
+      <div class="stat-label">📅 Semana actual</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📋 Tareas de hoy <span id="todayDate" style="opacity:.6;font-size:13px;font-weight:400"></span></h2>
+    <div id="taskList"></div>
+    <div class="grid" style="margin-top:12px">
+      <button class="btn" id="markAll">Marcar todo</button>
+      <button class="btn danger" id="clearToday">Desmarcar</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📝 Notas del día</h2>
+    <textarea id="todayNotes" placeholder="Gatillos, progresos, conflictos entre Oso y Ponky, etc."></textarea>
+    <button class="btn primary" id="saveNotes" style="margin-top:10px">Guardar notas</button>
+  </div>
+
+  <div class="section">
+    <h2>⚙️ Gestión</h2>
+    <div class="grid">
+      <button class="btn" id="addTaskBtn">+ Agregar tarea</button>
+      <button class="btn" id="reminderBtn">⏰ Recordatorios</button>
+      <button class="btn" id="exportBtn">📤 Exportar</button>
+      <button class="btn danger" id="resetBtn">🗑️ Borrar todo</button>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-btns">
+    <button class="btn primary" id="loadDefaultsBtn">📚 Cargar plan completo</button>
+  </div>
+</footer>
+
+<!-- Modal agregar tarea -->
+<div class="modal" id="addTaskModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Agregar tarea</h3>
+      <button class="modal-close" id="closeAddTask">×</button>
+    </div>
+    <div class="form-group">
+      <label>Nombre de la tarea</label>
+      <input id="newTitle" placeholder="Ej: Presencia sin disponibilidad (5 min)" />
+    </div>
+    <div class="form-group">
+      <label>Categoría</label>
+      <select id="newTag">
+        <option value="separacion">Separación</option>
+        <option value="reactividad">Reactividad</option>
+        <option value="recursos">Recursos</option>
+        <option value="paseo">Paseo</option>
+        <option value="calma">Calma</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Frecuencia</label>
+      <select id="newFreq">
+        <option value="daily">Diaria</option>
+        <option value="custom">Días específicos</option>
+      </select>
+    </div>
+    <div class="form-group" id="customDaysWrap" style="display:none">
+      <label>Días (0=Dom, 1=Lun … 6=Sáb, separados por coma)</label>
+      <input id="customDays" placeholder="Ej: 1,3,5" />
+      <div class="hint">Ejemplo: 1,2,3,4,5 para lunes a viernes</div>
+    </div>
+    <div class="form-group">
+      <label>Descripción (opcional)</label>
+      <textarea id="newDesc" placeholder="Detalles del ejercicio, objetivos, etc."></textarea>
+    </div>
+    <button class="btn primary" id="confirmAddTask">Agregar</button>
+  </div>
+</div>
+
+<!-- Modal recordatorios -->
+<div class="modal" id="reminderModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Recordatorios</h3>
+      <button class="modal-close" id="closeReminder">×</button>
+    </div>
+    <div class="form-group">
+      <label>Hora del recordatorio diario</label>
+      <input id="remTime" type="time" />
+      <div class="hint">Notificación del navegador (funciona mejor con la app abierta)</div>
+    </div>
+    <div class="grid">
+      <button class="btn" id="enableNotifs">Activar notifs</button>
+      <button class="btn" id="testNotif">Probar</button>
+    </div>
+    <hr style="border:0;border-top:1px solid var(--border);margin:20px 0">
+    <div class="form-group">
+      <label>Exportar recordatorio a calendario (.ics)</label>
+      <button class="btn" id="downloadIcs">📅 Descargar para calendario</button>
+      <div class="hint">Importa el archivo .ics en Google Calendar para recordatorios automáticos</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============= HELPERS =============
+const $ = (id) => document.getElementById(id);
+const fmtDate = (d) => d.toISOString().slice(0,10);
+const today = () => {
+  const d = new Date();
+  d.setHours(0,0,0,0);
+  return d;
+};
+const weekday = (d) => d.getDay();
+const uid = () => Math.random().toString(16).slice(2) + Date.now().toString(16);
+
+// ============= STORAGE =============
+const KEY = "oso_ponky_v2";
+const load = () => {
+  try { return JSON.parse(localStorage.getItem(KEY)) || null; }
+  catch { return null; }
+};
+const save = (state) => localStorage.setItem(KEY, JSON.stringify(state));
+
+const defaultState = {
+  tasks: [],
+  doneByDate: {},
+  notesByDate: {},
+  reminderTime: "20:00",
+  notifEnabled: false,
+  startDate: fmtDate(today())
+};
+
+let state = load() || defaultState;
+
+// ============= TASK LOGIC =============
+function isTaskScheduledFor(task, dateObj) {
+  if (task.freq === "daily") return true;
+  if (task.freq === "custom") {
+    const wd = weekday(dateObj);
+    return task.days.includes(wd);
+  }
+  return true;
+}
+
+function todaysTasks(dateObj) {
+  return state.tasks.filter(t => isTaskScheduledFor(t, dateObj));
+}
+
+function ensureDoneMap(dateStr) {
+  if (!state.doneByDate[dateStr]) state.doneByDate[dateStr] = {};
+}
+
+// ============= STREAK =============
+function computeStreak() {
+  const t = today();
+  let streak = 0;
+  for (let i=0; i<365; i++) {
+    const d = new Date(t);
+    d.setDate(t.getDate() - i);
+    const ds = fmtDate(d);
+    const tasks = todaysTasks(d);
+    if (tasks.length === 0) continue;
+    ensureDoneMap(ds);
+    const doneCount = tasks.filter(x => state.doneByDate[ds][x.id]).length;
+    const pct = doneCount / tasks.length;
+    if (pct >= 0.6) streak++;
+    else break;
+  }
+  return streak;
+}
+
+function weekNumber() {
+  const start = new Date(state.startDate);
+  const now = today();
+  const diff = Math.floor((now - start) / (1000*60*60*24));
+  return Math.floor(diff / 7) + 1;
+}
+
+// ============= RENDER =============
+function render() {
+  const t = today();
+  const ds = fmtDate(t);
+  $("todayDate").textContent = `— ${ds}`;
+
+  ensureDoneMap(ds);
+  const tasks = todaysTasks(t);
+
+  const list = $("taskList");
+  list.innerHTML = "";
+
+  if (tasks.length === 0) {
+    list.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-state-icon">🐕</div>
+        <p>No hay tareas para hoy.<br>Usa "Cargar plan completo" abajo.</p>
+      </div>
+    `;
+  } else {
+    tasks.forEach(task => {
+      const done = !!state.doneByDate[ds][task.id];
+      const div = document.createElement("div");
+      div.className = "task" + (done ? " done" : "");
+      div.innerHTML = `
+        <input type="checkbox" ${done ? "checked" : ""} data-id="${task.id}" />
+        <div class="task-content">
+          <div class="task-title">${escapeHtml(task.title)}</div>
+          <div class="task-meta">
+            <span class="tag ${task.tag}">${task.tag}</span>
+          </div>
+          ${task.desc ? `<div class="task-desc">${escapeHtml(task.desc)}</div>` : ''}
+        </div>
+        <button class="btn small danger" data-delete="${task.id}">🗑️</button>
+      `;
+
+      const cb = div.querySelector("input");
+      cb.addEventListener("change", () => {
+        state.doneByDate[ds][task.id] = cb.checked;
+        save(state);
+        render();
+      });
+
+      const delBtn = div.querySelector("[data-delete]");
+      delBtn.addEventListener("click", () => {
+        if (!confirm("¿Eliminar esta tarea?")) return;
+        state.tasks = state.tasks.filter(x => x.id !== task.id);
+        for (const dkey of Object.keys(state.doneByDate)) {
+          delete state.doneByDate[dkey][task.id];
+        }
+        save(state);
+        render();
+      });
+
+      list.appendChild(div);
+    });
+  }
+
+  const doneCount = tasks.filter(x => state.doneByDate[ds][x.id]).length;
+  const pct = tasks.length ? Math.round((doneCount / tasks.length) * 100) : 0;
+  $("pct").textContent = pct + "%";
+  $("streak").textContent = computeStreak();
+  $("weekCount").textContent = weekNumber();
+
+  // Notas
+  $("todayNotes").value = state.notesByDate[ds] || "";
+  $("remTime").value = state.reminderTime || "20:00";
+}
+
+function escapeHtml(s) {
+  return (s || "").replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[c]));
+}
+
+// ============= EVENTS =============
+$("markAll").addEventListener("click", () => {
+  const ds = fmtDate(today());
+  ensureDoneMap(ds);
+  todaysTasks(today()).forEach(t => state.doneByDate[ds][t.id] = true);
+  save(state); render();
+});
+
+$("clearToday").addEventListener("click", () => {
+  if (!confirm("¿Desmarcar todas las tareas de hoy?")) return;
+  const ds = fmtDate(today());
+  ensureDoneMap(ds);
+  todaysTasks(today()).forEach(t => delete state.doneByDate[ds][t.id]);
+  save(state); render();
+});
+
+$("saveNotes").addEventListener("click", () => {
+  const ds = fmtDate(today());
+  state.notesByDate[ds] = $("todayNotes").value.trim();
+  save(state);
+  alert("Notas guardadas ✓");
+});
+
+// ============= MODALS =============
+function openModal(id) {
+  $(id).classList.add("active");
+}
+function closeModal(id) {
+  $(id).classList.remove("active");
+}
+
+$("addTaskBtn").addEventListener("click", () => openModal("addTaskModal"));
+$("closeAddTask").addEventListener("click", () => closeModal("addTaskModal"));
+
+$("reminderBtn").addEventListener("click", () => openModal("reminderModal"));
+$("closeReminder").addEventListener("click", () => closeModal("reminderModal"));
+
+$("newFreq").addEventListener("change", () => {
+  $("customDaysWrap").style.display = $("newFreq").value === "custom" ? "block" : "none";
+});
+
+$("confirmAddTask").addEventListener("click", () => {
+  const title = $("newTitle").value.trim();
+  if (!title) return alert("Pon un nombre de tarea");
+
+  const tag = $("newTag").value;
+  const freq = $("newFreq").value;
+  let days = [];
+
+  if (freq === "custom") {
+    const raw = $("customDays").value.trim();
+    if (!raw) return alert("Indica los días o cambia a diaria");
+    days = raw.split(",").map(x => parseInt(x.trim(),10)).filter(n => Number.isFinite(n) && n>=0 && n<=6);
+    if (!days.length) return alert("Formato de días inválido");
+  }
+
+  const desc = $("newDesc").value.trim();
+  state.tasks.push({ id: uid(), title, tag, freq, days, desc });
+
+  $("newTitle").value = "";
+  $("newDesc").value = "";
+  $("customDays").value = "";
+
+  save(state);
+  render();
+  closeModal("addTaskModal");
+  alert("Tarea agregada ✓");
+});
+
+// ============= DEFAULTS =============
+$("loadDefaultsBtn").addEventListener("click", () => {
+  if (state.tasks.length > 0) {
+    if (!confirm("Ya tienes tareas. ¿Agregar el plan completo de todas formas?")) return;
+  }
+
+  const defaults = [
+    {
+      title:"Presencia sin disponibilidad (5–10 min)",
+      tag:"separacion",
+      freq:"daily",
+      days:[],
+      desc:"Tú en otra pieza, puerta cerrada, sin hablar/mirar. Objetivo: bajar vigilancia de Oso."
+    },
+    {
+      title:"Micro-salida (30–180 s) + retorno neutro",
+      tag:"separacion",
+      freq:"daily",
+      days:[],
+      desc:"Sales/entras sin saludo 2–3 min. Ponky con tarea calmante; Oso sin premio especial."
+    },
+    {
+      title:"Paseo calmado (sin buscar estímulos)",
+      tag:"paseo",
+      freq:"daily",
+      days:[],
+      desc:"Ritmo constante. Mejor volver aburridos que sobreexcitados."
+    },
+    {
+      title:"Turno de olfato (5 min)",
+      tag:"calma",
+      freq:"daily",
+      days:[],
+      desc:"Búsqueda de comida escondida o alfombra olfativa. Cero persecución."
+    },
+    {
+      title:"Giro 90° temprano (entrenamiento reactividad)",
+      tag:"reactividad",
+      freq:"custom",
+      days:[1,3,5],
+      desc:"Si aparece gato: no órdenes, no premios; giro y caminas. Oso atrás, Ponky adelante."
+    },
+    {
+      title:"Manejo de recursos: separados",
+      tag:"recursos",
+      freq:"daily",
+      days:[],
+      desc:"Nada de premios dispersos juntos. Si Oso acapara: interrupción + pierde acceso."
+    },
+    {
+      title:"Sesión separados (10–15 min)",
+      tag:"calma",
+      freq:"custom",
+      days:[2,4,6],
+      desc:"Uno sale contigo, el otro queda con ruido blanco + tarea. Objetivo: desacoplar."
+    },
+    {
+      title:"Protección activa de Ponky en conflictos",
+      tag:"recursos",
+      freq:"daily",
+      days:[],
+      desc:"Si Oso intimida (ladrido, desplazamiento): interrupción inmediata. Bloqueo corporal si es necesario."
+    },
+    {
+      title:"Comida separada (ambos perros)",
+      tag:"recursos",
+      freq:"daily",
+      days:[],
+      desc:"Oso y Ponky comen en espacios diferentes. No negociable hasta nuevo aviso."
+    },
+  ];
+
+  const existing = new Set(state.tasks.map(t => t.title));
+  defaults.forEach(d => {
+    if (!existing.has(d.title)) {
+      state.tasks.push({ id: uid(), ...d });
+    }
+  });
+
+  save(state);
+  render();
+  alert("Plan completo cargado ✓\n\nIncluye:\n• Separación\n• Reactividad\n• Recursos\n• Calma\n• Paseos");
+});
+
+// ============= NOTIFICATIONS =============
+async function requestNotifs() {
+  if (!("Notification" in window)) {
+    alert("Este navegador no soporta notificaciones");
+    return false;
+  }
+  const perm = await Notification.requestPermission();
+  state.notifEnabled = (perm === "granted");
+  save(state);
+  return state.notifEnabled;
+}
+
+$("enableNotifs").addEventListener("click", async () => {
+  const ok = await requestNotifs();
+  alert(ok ? "Notificaciones activadas ✓" : "No se activaron las notificaciones");
+});
+
+$("testNotif").addEventListener("click", async () => {
+  if (Notification.permission !== "granted") {
+    const ok = await requestNotifs();
+    if (!ok) return;
+  }
+  new Notification("Plan Oso & Ponky", {
+    body: "Recordatorio de prueba ✓",
+    icon: "icon-192.png"
+  });
+});
+
+$("remTime").addEventListener("change", () => {
+  state.reminderTime = $("remTime").value || "20:00";
+  save(state);
+});
+
+// Notification loop
+function scheduleLoop() {
+  setInterval(() => {
+    if (!state.notifEnabled || Notification.permission !== "granted") return;
+    const now = new Date();
+    const hhmm = now.toTimeString().slice(0,5);
+    const target = state.reminderTime || "20:00";
+    const ds = fmtDate(today());
+    const key = "notified_" + ds + "_" + target;
+
+    if (hhmm === target && !sessionStorage.getItem(key)) {
+      sessionStorage.setItem(key, "1");
+      new Notification("Plan Oso & Ponky", {
+        body: "Hora de marcar tu plan del día 🐕🐕",
+        icon: "icon-192.png"
+      });
+    }
+  }, 20000);
+}
+
+// ============= ICS EXPORT =============
+function downloadText(filename, text, type = "text/plain") {
+  const blob = new Blob([text], { type });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function icsForDailyReminder(timeHHMM) {
+  const [hh, mm] = timeHHMM.split(":").map(x=>parseInt(x,10));
+  const start = new Date();
+  start.setHours(hh, mm, 0, 0);
+  const pad = (n)=> String(n).padStart(2,"0");
+  const dt = `${start.getFullYear()}${pad(start.getMonth()+1)}${pad(start.getDate())}T${pad(hh)}${pad(mm)}00`;
+  const uidVal = uid() + "@oso-ponky";
+
+  return [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//Plan Oso Ponky//ES",
+    "BEGIN:VEVENT",
+    `UID:${uidVal}`,
+    `DTSTART:${dt}`,
+    "RRULE:FREQ=DAILY",
+    "SUMMARY:Plan Oso & Ponky",
+    "DESCRIPTION:Recordatorio diario para marcar avances del plan de entrenamiento",
+    "BEGIN:VALARM",
+    "TRIGGER:-PT0M",
+    "ACTION:DISPLAY",
+    "DESCRIPTION:Plan Oso & Ponky",
+    "END:VALARM",
+    "END:VEVENT",
+    "END:VCALENDAR"
+  ].join("\r\n");
+}
+
+$("downloadIcs").addEventListener("click", () => {
+  const t = state.reminderTime || "20:00";
+  downloadText("recordatorio_oso_ponky.ics", icsForDailyReminder(t), "text/calendar");
+  alert("Archivo .ics descargado ✓\n\nImportalo en Google Calendar o tu app de calendario");
+});
+
+// ============= EXPORT/RESET =============
+$("exportBtn").addEventListener("click", () => {
+  downloadText("plan_oso_ponky_backup.json", JSON.stringify(state, null, 2), "application/json");
+  alert("Datos exportados ✓");
+});
+
+$("resetBtn").addEventListener("click", () => {
+  if (!confirm("¿BORRAR TODO? Esta acción no se puede deshacer.")) return;
+  if (!confirm("¿Estás SEGURO? Se perderán todas las tareas, notas y progreso.")) return;
+
+  state = JSON.parse(JSON.stringify(defaultState));
+  state.startDate = fmtDate(today());
+  save(state);
+  render();
+  alert("Todos los datos han sido borrados");
+});
+
+// ============= INIT =============
+if (!state.reminderTime) state.reminderTime = "20:00";
+if (!state.startDate) state.startDate = fmtDate(today());
+save(state);
+render();
+scheduleLoop();
+
+// ============= SERVICE WORKER =============
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+</script>
+
+</body>
+</html>
