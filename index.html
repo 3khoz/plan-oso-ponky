@@ -7,7 +7,7 @@
   <meta name="description" content="Plan adaptativo de entrenamiento para Oso y Ponky" />
   <meta name="theme-color" content="#0b0f14" />
   <link rel="manifest" href="manifest.json" />
-  <link rel="icon" type="image/png" href="icon-192.png" />
+  <link rel="icon" href="app.ico" />
   <title>Plan Oso & Ponky - IA Adaptativa</title>
   <style>
     :root {
@@ -965,31 +965,7 @@
       font-weight: 500;
     }
 
-    footer {
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 10px 12px max(10px, env(safe-area-inset-bottom));
-      border-top: 1px solid var(--border);
-      background: rgba(245, 232, 216, .96);
-      backdrop-filter: blur(12px);
-      z-index: 100;
-    }
 
-    .footer-btns {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      gap: 8px;
-    }
-
-    .footer-btns .btn {
-      flex: 1;
-      min-width: 0;
-      font-size: 12px;
-      padding: 11px 10px;
-    }
 
     .loading {
       text-align: center;
@@ -1154,6 +1130,11 @@
   </header>
 
   <main>
+    <div class="action-buttons-top">
+      <button class="btn primary" id="loadPlanBtn">📚 Cargar plan completo</button>
+      <button class="btn success" id="completeWeekBtn">✅ Completar semana</button>
+    </div>
+
     <div class="stats">
       <div class="stat-card">
         <span class="stat-value" id="currentWeek">1</span>
@@ -1179,12 +1160,14 @@
 
     <div id="weekObjectiveContainer"></div>
 
-    <div id="weeklyReviewContainer"></div>
+    <!-- Review container moved to bottom -->
 
     <div class="section">
       <h2>📋 Tareas de la semana</h2>
       <div id="taskList"></div>
     </div>
+
+    <div id="weeklyReviewContainer"></div>
 
     <div class="section">
       <h2>⚙️ Configuración</h2>
@@ -1200,12 +1183,7 @@
     </div>
   </main>
 
-  <footer>
-    <div class="footer-btns">
-      <button class="btn primary" id="loadPlanBtn">📚 Cargar plan completo</button>
-      <button class="btn success" id="completeWeekBtn">✅ Completar semana</button>
-    </div>
-  </footer>
+  <!-- Footer removed -->
 
   <!-- Modal Settings -->
   <div class="modal" id="settingsModal">
