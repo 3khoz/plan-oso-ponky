@@ -2,148 +2,226 @@
 
 const WEEK_PLAN = {
   1: {
-    theme: "Bajar la base",
-    objective: "Reducir la activación general de Oso y desacoplar emocionalmente a Ponky",
-    focus: ["Presencia sin disponibilidad", "Paseos tranquilos", "Evitar sobreestimulación"],
+    theme: "Bases de Seguridad, Control y Manejo",
+    objective: "Establecer manejo ambiental, obediencia básica positiva y asociaciones iniciales placenteras.",
+    focus: ["Manejo Ambiental", "Obediencia Básica", "Asociación Positiva"],
     tasks: [
       {
-        title: "Presencia sin disponibilidad (2-3 bloques de 5-10 min)",
-        desc: "Tú en otra pieza, puerta cerrada, sin hablar/mirar. Objetivo: Oso deja de sentir que debe vigilar.",
-        tag: "separacion",
-        freq: "daily"
+        day: "Lunes",
+        title: "Manejo Ambiental y Repaso de Obediencia",
+        desc: "Implementa separación en comidas y retiro de juguetes. Sesión corta (5-10 min) de 'sentado', 'quieto', 'ven' con ambos juntos, premiando por turno.",
+        tag: "obediencia",
+        explanation: "El manejo ambiental previene conflictos antes de que ocurran. La obediencia conjunta enseña a esperar turnos y reduce la competencia por recursos."
       },
       {
-        title: "Paseos cortos y calmados (20-30 min)",
-        desc: "Sin buscar estímulos. Ritmo constante. Mejor volver aburridos que sobreexcitados.",
+        day: "Martes",
+        title: "Intercambio con Oso (1 a 1)",
+        desc: "5 min solo con Oso. Ofrece juguete bajo valor, pide 'suelta', premia con algo mejor. Repite.",
+        tag: "recursos",
+        explanation: "Enseña a Oso que soltar no significa perder, sino ganar algo mejor (Contracondicionamiento). Reduce la necesidad de retener recursos agresivamente."
+      },
+      {
+        day: "Miércoles",
+        title: "Paseo de Observación Tranquila",
+        desc: "Mantén distancia. Si miran perros sin reaccionar, '¡muy bien!' y premio. Si se tensan, aumenta distancia.",
         tag: "paseo",
-        freq: "daily"
+        explanation: "Desensibilización sistemática: exponer al estímulo a una intensidad tan baja que no provoca reacción, premiando la calma (Refuerzo Diferencial)."
       },
       {
-        title: "PROHIBIDO: juegos intensos o entrenamientos en calle",
-        desc: "Esta semana es para bajar revoluciones, no para subir. Nada de fuerza, solo calma.",
-        tag: "calma",
-        freq: "daily"
-      },
-      {
-        title: "Observar sin intervenir si Oso se inquieta",
-        desc: "Cuando hagas presencia sin disponibilidad: NO corrijas, NO calmes. Solo observa. Anota qué pasa.",
+        day: "Jueves",
+        title: "Inicio de Separación Gradual",
+        desc: "Barrera entre ellos 10-20 seg contigo presente. Premios a ambos si están tranquilos. Repetir 2-3 veces.",
         tag: "separacion",
-        freq: "daily"
+        explanation: "Habituación progresiva a la separación. Asociamos la barrera física con premios (algo positivo) en lugar de angustia."
+      },
+      {
+        day: "Viernes",
+        title: "Repaso General y Juego",
+        desc: "Repite obediencia conjunta. Juego tranquilo supervisado, cada uno con su juguete. Refuerza la calma.",
+        tag: "calma",
+        explanation: "Consolidar comportamientos mediante repetición. El juego supervisado permite intervenir antes de que escale la excitación."
+      },
+      {
+        day: "Sábado",
+        title: "Paseo de Asociación Positiva",
+        desc: "Busca perros a distancia. Sé una 'máquina de premios' antes de que reaccionen.",
+        tag: "paseo",
+        explanation: "Contracondicionamiento clásico: Perro a lo lejos = Comida rica. Cambia la emoción de 'alerta' a 'expectativa feliz'."
+      },
+      {
+        day: "Domingo",
+        title: "Separación Gradual con Distracción",
+        desc: "Barrera 30-60 seg. Usa KONG o juguetes interactivos rellenos para cada uno.",
+        tag: "separacion",
+        explanation: "El enriquecimiento (Kong) facilita la separación al mantener el cerebro ocupado y generar una asociación muy placentera con la soledad."
       }
     ]
   },
   2: {
-    theme: "Separación dosificada",
-    objective: "Romper la cadena emocional Oso → Ponky mediante separaciones muy cortas y asimétricas",
-    focus: ["Micro-salidas", "Asimetría de premios", "Retorno neutro"],
+    theme: "Consolidación y Pequeños Avances",
+    objective: "Afianzar lo aprendido e incrementar gradualmente la dificultad. Mantener manejo estricto.",
+    focus: ["Turnos", "Foco en el guía", "Separación visual"],
     tasks: [
       {
-        title: "Micro-salida (30 seg - 3 min) 1-2 veces al día",
-        desc: "Llaves, zapatos, sales. Al volver: CERO saludo por 2-3 min. Mensaje: no hubo nada que reparar.",
-        tag: "separacion",
-        freq: "daily"
+        day: "Lunes",
+        title: "Obediencia y Turnos",
+        desc: "Obediencia conjunta. Pide 'sentado'. Premia a Ponky, elogia a Oso por esperar ('¡muy bien, espera!'), luego premia a Oso.",
+        tag: "obediencia",
+        explanation: "Refuerza el autocontrol y reduce la ansiedad por competencia. Oso aprende que esperar también trae recompensa."
       },
       {
-        title: "Asimetría clave: Ponky con tarea, Oso sin premio",
-        desc: "Ponky recibe kong blando o alfombra olfativa. Oso no recibe nada especial. Objetivo: Oso aprende que no es responsable del bienestar de todos.",
-        tag: "separacion",
-        freq: "daily"
-      },
-      {
-        title: "Paseo separado (aunque uno llore un poco)",
-        desc: "Un paseo semanal donde uno sale y el otro queda. Es terapéutico, no cruel. Anota cómo reaccionan.",
-        tag: "separacion",
-        freq: "custom",
-        days: [3, 6]
-      },
-      {
-        title: "Continuar: presencia sin disponibilidad",
-        desc: "Mantén 1-2 bloques diarios. Ya deberías ver que Oso se relaja más rápido.",
-        tag: "separacion",
-        freq: "daily"
-      },
-      {
-        title: "Comida separada (NUEVA REGLA)",
-        desc: "Oso y Ponky comen en espacios diferentes. No negociable. Si Oso controla recursos, esto es obligatorio.",
+        day: "Martes",
+        title: "Intercambio y 'Deja' con Oso",
+        desc: "Sube valor del juguete ligeramente. Introduce 'deja' (no tomar objeto ajeno) premiando con algo mejor.",
         tag: "recursos",
-        freq: "daily"
+        explanation: "Reforzamiento diferencial de conducta incompatible: si 'deja' el objeto, gana el premio. Inhibe el impulso de arrebatar."
+      },
+      {
+        day: "Miércoles",
+        title: "Paseo con 'Mírame'",
+        desc: "Ante perro a distancia: '¡Oso, mírame!'. Si mira: premio. Fomenta enfoque en ti.",
+        tag: "paseo",
+        explanation: "Conducta alternativa (DRA): No pueden ladrar al otro perro si te están mirando a ti concentrados."
+      },
+      {
+        day: "Jueves",
+        title: "Separación con Distancia Visual",
+        desc: "Aumenta distancia física (extremos del pasillo). Usa Kongs. Meta: 1-2 min tranquilos.",
+        tag: "separacion",
+        explanation: "Aumentar criterios (duración/distancia) gradualmente es clave en la desensibilización para evitar el 'efecto rebote' de la ansiedad."
+      },
+      {
+        day: "Viernes",
+        title: "Manejo Activo en Casa",
+        desc: "Si Oso se acerca a Ponky cuando tiene juguete: '¡Oso, a tu cama!' y premia generosamente.",
+        tag: "recursos",
+        explanation: "Manejo espacial mediante comandos positivos. Protege a Ponky sin castigar a Oso, dándole una tarea alternativa clara."
+      },
+      {
+        day: "Sábado",
+        title: "Paseo de Socialización Pasiva",
+        desc: "Siéntate en parque lejano (10 min). Premia la calma y miradas hacia ti al ver pasar gente/perros.",
+        tag: "calma",
+        explanation: "Habituación: exposición prolongada a baja intensidad ayuda a que el estímulo se vuelva irrelevante (aburrido) y seguro."
+      },
+      {
+        day: "Domingo",
+        title: "Repaso y Evaluación",
+        desc: "Evalúa: ¿Disminuyeron intentos de robo? ¿Paseos más tranquilos? Ajusta distancia si es necesario.",
+        tag: "evaluacion",
+        explanation: "La observación es fundamental. Si hay fallos, probablemente hemos avanzado muy rápido (superado el umbral). Retroceder es avanzar."
       }
     ]
   },
   3: {
-    theme: "Reactividad con control humano",
-    objective: "Que Oso delegue decisiones sobre estímulos externos (gatos, personas, etc.)",
-    focus: ["Giro 90° temprano", "Oso atrás, Ponky adelante", "Intervención en control de recursos"],
+    theme: "Aumentando Duración y Proximidad",
+    objective: "Progresar lentamente en duración de separaciones y reducir distancia en paseos, vigilando umbrales.",
+    focus: ["Distracciones leves", "Proximidad controlada", "Puertas cerradas"],
     tasks: [
       {
-        title: "Paseo: Oso atrás, Ponky adelante (correas distintas)",
-        desc: "Oso deja de ser el explorador primario. Ponky empieza a ocupar espacio sin liderar. Al principio se verá raro. Eso es buena señal.",
+        day: "Lunes",
+        title: "Obediencia con Distracciones Leves",
+        desc: "Practica en jardín/patio con juguetes cerca. 'Sentado', 'quieto'. Premia enfoque.",
+        tag: "obediencia",
+        explanation: "Generalización: llevar lo aprendido en ambiente estéril a ambientes con más estímulos gradualmente."
+      },
+      {
+        day: "Martes",
+        title: "Intercambio en Presencia de Ponky",
+        desc: "Intercambio con Oso en misma habitación que Ponky (distancia segura). Premia foco en ti.",
+        tag: "recursos",
+        explanation: "Desensibilización a la presencia del competidor. Oso aprende a jugar cooperativamente sin sentirse amenazado por Ponky."
+      },
+      {
+        day: "Miércoles",
+        title: "Paseo: Reduciendo Distancia",
+        desc: "Acércate un poco más a otros perros si están tranquilos. Premia calma. Si hay tensión, retrocede.",
         tag: "paseo",
-        freq: "daily"
+        explanation: "Trabajar justo bajo el umbral de reacción. Si hay reacción, es información: estamos muy cerca aún."
       },
       {
-        title: "Giro 90° cuando aparece gato (ANTES del ladrido)",
-        desc: "No órdenes. No premios. Solo: cuello rígido de Oso → giro de 90° y sigues caminando. Mensaje: esto no es asunto tuyo.",
-        tag: "reactividad",
-        freq: "daily"
+        day: "Jueves",
+        title: "Separación Puerta Entornada/Cerrada",
+        desc: "Cierra puerta 5-10s. Abre antes de ansiedad. Premia calma al reunir.",
+        tag: "separacion",
+        explanation: "El 'retorno del dueño' refuerza la conducta de quedarse tranquilo. Si lloran y abres, refuerzas el llanto."
       },
       {
-        title: "Interrupción activa si Oso acapara recursos",
-        desc: "Si Oso le quita juguete/comida a Ponky o ladra para desplazar: intervención inmediata. Oso pierde acceso. Ponky se queda.",
-        tag: "recursos",
-        freq: "daily"
-      },
-      {
-        title: "Protección corporal de Ponky",
-        desc: "Si Oso intimida: te paras entre ellos. Cuerpo erguido, sin hablar. Mensaje: no es tu rol.",
-        tag: "recursos",
-        freq: "daily"
-      },
-      {
-        title: "Juegos: separación total (por ahora)",
-        desc: "Nada de juguetes compartidos. Oso juega solo. Ponky juega solo. O juntos, pero sin objetos (olfato, caminatas).",
+        day: "Viernes",
+        title: "Juegos de Olfato",
+        desc: "Buscar premios escondidos en casa. Fomenta calma y cansa mentalmente.",
         tag: "calma",
-        freq: "daily"
+        explanation: "El olfato reduce pulsaciones y niveles de cortisol. Es una actividad naturalmente relajante y gratificante."
+      },
+      {
+        day: "Sábado",
+        title: "Paseo y 'Mírame' Avanzado",
+        desc: "Practica ante estímulos más intensos (perro pasando más cerca). Premia contacto visual rápido.",
+        tag: "paseo",
+        explanation: "Prueba de fluidez: el comportamiento debe ser casi automático ante la señal visual del estímulo."
+      },
+      {
+        day: "Domingo",
+        title: "Separación: Aumentando a Puerta Cerrada",
+        desc: "15s, 30s, 1min a puerta cerrada. Usa premios larga duración (hueso/Kong).",
+        tag: "separacion",
+        explanation: "Incremento de criterio. La puerta cerrada elimina la señal visual, el perro debe confiar en la predicción segura del retorno."
       }
     ]
   },
   4: {
-    theme: "Integración",
-    objective: "Que funcionen juntos sin escalarse. Consolidar todo lo aprendido.",
-    focus: ["Paseos juntos sin sincronía", "Salidas más largas", "Revisión de progresos"],
+    theme: "Integración y Consolidación",
+    objective: "Funcionar juntos sin escalarse. Evaluar progreso mensual y solidez de fundamentos.",
+    focus: ["Autocontrol", "Manejo Real", "Independencia"],
     tasks: [
       {
-        title: "Paseos juntos, pero con distancia entre ellos",
-        desc: "Mantén correas a diferentes largos. Menos sincronía. Objetivo: que se regulen sin copiarse.",
-        tag: "paseo",
-        freq: "daily"
+        day: "Lunes",
+        title: "Repaso General Obediencia y Autocontrol",
+        desc: "Todos los comandos. 'Espera' antes de comer o salir. Autocontrol básico.",
+        tag: "obediencia",
+        explanation: "El autocontrol funciona como un músculo. Ejercitarlo en situaciones cotidianas ayuda a regular emociones fuertes."
       },
       {
-        title: "Salidas de casa un poco más largas (5-10 min)",
-        desc: "Mantienes asimetría de premios. Si esta semana hay retrocesos: es normal. El sistema viejo pelea por volver.",
+        day: "Martes",
+        title: "Manejo de Recursos Real",
+        desc: "Ponky con juguete valor medio. Redirige a Oso si se acerca. Premia a Oso por alejarse.",
+        tag: "recursos",
+        explanation: "Prueba de fuego controlada. Reforzamos la decisión de Oso de NO entrar en conflicto."
+      },
+      {
+        day: "Miércoles",
+        title: "Paseo de Evaluación Reactividad",
+        desc: "Observa reacciones a distancias trabajadas. ¿Están más tranquilos? Ajusta expectativas.",
+        tag: "evaluacion",
+        explanation: "La evaluación objetiva evita estancamientos. Celebra la reducción de intensidad, no solo la perfección."
+      },
+      {
+        day: "Jueves",
+        title: "Separación: Duración Variable",
+        desc: "Sesiones cortas y largas (hasta 2-3 min) puerta cerrada. Siempre premio alto valor al inicio.",
         tag: "separacion",
-        freq: "daily"
+        explanation: "Variabilidad: para que el perro no anticipe que 'siempre es difícil'. A veces es fácil, a veces medio."
       },
       {
-        title: "Re-introducción gradual de juguetes compartidos",
-        desc: "SOLO si en semana 3 no hubo conflictos. Empieza con objetos de bajo valor (cartón, pelota vieja). Tú presente.",
-        tag: "recursos",
-        freq: "custom",
-        days: [2, 4, 6]
-      },
-      {
-        title: "Evaluación semanal: ¿Oso sigue controlando?",
-        desc: "Observa si Oso todavía desplaza a Ponky. Si sí: vuelve a semana 3. Si no: sigue adelante.",
-        tag: "recursos",
-        freq: "custom",
-        days: [7]
-      },
-      {
-        title: "Celebración de cierre de mes",
-        desc: "Anota TODO lo que cambió. Tanto lo que mejoró como lo que sigue trabado. Esto alimenta el siguiente ciclo.",
+        day: "Viernes",
+        title: "Juegos de Olfato Conjuntos",
+        desc: "Búsqueda simultánea en áreas separadas. Supervisa invasión de espacio.",
         tag: "calma",
-        freq: "custom",
-        days: [7]
+        explanation: "Actividad cooperativa paralela. Pueden compartir una actividad placentera sin competir directamente."
+      },
+      {
+        day: "Sábado",
+        title: "Paseo Largo y Relajado (Descompresión)",
+        desc: "Entorno tranquilo (campo/playa). Correas largas. Dejar oler mucho.",
+        tag: "calma",
+        explanation: "Paseos de descompresión (Decompression Walks) permiten bajar niveles de estrés acumulados en la semana."
+      },
+      {
+        day: "Domingo",
+        title: "Evaluación Final Mes 1",
+        desc: "Reflexiona: ¿Qué mejoró? ¿Qué sigue difícil? Celebra éxitos. Planifica Mes 2.",
+        tag: "evaluacion",
+        explanation: "El progreso en modificación conductual no es lineal. Reconocer pequeños avances motiva a continuar la consistencia."
       }
     ]
   }
@@ -183,6 +261,32 @@ function loadState() {
 
 function saveState() {
   localStorage.setItem('oso_ponky_ai_v1', JSON.stringify(state));
+}
+
+function syncStateWithPlan() {
+  // Merges the latest WEEK_PLAN descriptions/explanations into the saved state
+  // This ensures that if we update the text/content, the user sees it even if they have saved progress.
+  for (let week = 1; week <= 4; week++) {
+    if (state.tasks[week] && WEEK_PLAN[week]) {
+      state.tasks[week].forEach((task, index) => {
+        const freshTask = WEEK_PLAN[week].tasks[index];
+        if (freshTask) {
+          // Update static content fields, keep dynamic state (completed, comments)
+          task.title = freshTask.title;
+          task.desc = freshTask.desc;
+          task.tag = freshTask.tag;
+          task.day = freshTask.day;
+          task.explanation = freshTask.explanation;
+        }
+      });
+    }
+  }
+  // Also update week themes/objectives if they are stored in state (they are not, they are read from WEEK_PLAN directly in render)
+}
+
+// Initial sync
+if (state) {
+  syncStateWithPlan();
 }
 
 // ============= INICIALIZACIÓN =============
@@ -272,6 +376,84 @@ function renderWeekObjective() {
   const week = state.currentWeek;
   const plan = WEEK_PLAN[week];
 
+  let educationalContent = '';
+
+  // Add educational illustrations based on week
+  if (week === 1 && typeof illustrations !== 'undefined') {
+    educationalContent = `
+      <div class="edu-box">
+        <h4>📚 Fundamento: Ponky adelante en paseos</h4>
+        <div class="edu-illustration">${illustrations.paseoOrdenado}</div>
+        <p class="edu-explanation">
+          Durante los paseos, Ponky camina ADELANTE (toma decisiones sobre dirección, olores, pausas) mientras Oso va ATRÁS.
+        </p>
+        <div class="edu-why">
+          <strong>¿Por qué funciona?</strong>
+          Cuando Oso va adelante, se siente responsable de "proteger" y controlar. Esto aumenta su tensión. Al poner a Ponky adelante, le das a Ponky empoderamiento (toma decisiones, siente confianza) y a Oso le bajas la carga mental. Oso aprende: "No tengo que estar vigilando todo el tiempo". Esto es especialmente importante porque Ponky es un "amplificador emocional": si siente que tiene control, su ansiedad baja, lo que también baja la activación de Oso.
+        </div>
+      </div>
+    `;
+  }
+
+  if (week === 2 && typeof illustrations !== 'undefined') {
+    educationalContent = `
+      <div class="edu-box">
+        <h4>📚 Técnica clave: Comida separada</h4>
+        <div class="edu-illustration">${illustrations.comidaSeparada}</div>
+        <p class="edu-explanation">
+          Oso y Ponky deben comer en espacios diferentes, idealmente con una puerta o barrera visual entre ellos.
+        </p>
+        <div class="edu-why">
+          <strong>¿Por qué funciona?</strong>
+          Cuando Oso controla los recursos (comida), Ponky desarrolla ansiedad anticipatoria. Al separar físicamente el espacio de alimentación, Ponky puede comer sin miedo y Oso aprende que no necesita "vigilar" todo. Esto rompe el ciclo de control-sumisión.
+        </div>
+      </div>
+    `;
+  }
+
+  if (week === 3 && typeof illustrations !== 'undefined') {
+    educationalContent = `
+      <div class="edu-box">
+        <h4>📚 Técnica clave: Giro 90° y orden en paseos</h4>
+        <div class="edu-illustration">${illustrations.giro90}</div>
+        <p class="edu-explanation">
+          Cuando Oso se reactiva (ve un gato, otro perro), gira 90° en dirección opuesta y camina con calma. Ponky va ADELANTE, Oso atrás.
+        </p>
+        <div class="edu-why">
+          <strong>¿Por qué funciona?</strong>
+          El giro 90° interrumpe la cadena de arousal (activación emocional) antes de que escale. Al no enfrentar el estímulo directamente, Oso no recibe refuerzo por ladrar. Ponky adelante significa que él toma decisiones (reduce miedo), mientras Oso aprende a delegar el liderazgo situacional.
+        </div>
+      </div>
+      <div class="edu-box">
+        <h4>📚 Intervención ante control de recursos</h4>
+        <div class="edu-illustration">${illustrations.tutoraInterviniendo}</div>
+        <p class="edu-explanation">
+          Si Oso le quita un juguete/premio a Ponky, intervenes de inmediato: bloqueas con tu cuerpo, recuperas el objeto, se lo das a Ponky. Oso pierde acceso temporal.
+        </p>
+        <div class="edu-why">
+          <strong>¿Por qué funciona?</strong>
+          Oso controla por inseguridad: cree que debe acaparar todo "por si acaso". Tu intervención le enseña que tú gestionas los recursos, no él. Esto baja su ansiedad (no tiene que controlar) y protege a Ponky de desarrollar miedo aprendido.
+        </div>
+      </div>
+    `;
+  }
+
+  if (week === 4 && typeof illustrations !== 'undefined') {
+    educationalContent = `
+      <div class="edu-box">
+        <h4>📚 Integración: Paseos con distancia entre ellos</h4>
+        <div class="edu-illustration">${illustrations.paseoOrdenado}</div>
+        <p class="edu-explanation">
+          Mantén correas a diferentes largos durante los paseos. Ponky puede ir adelante explorando, mientras Oso va atrás con menos tensión en la correa. Menos sincronía = menos contagio emocional.
+        </p>
+        <div class="edu-why">
+          <strong>¿Por qué funciona?</strong>
+          En las primeras semanas rompiste la cadena emocional Oso → Ponky. Ahora consolidas: si caminan con distancia física entre ellos, cada uno toma decisiones independientes. Oso no vigila a Ponky, Ponky no amplifica la tensión de Oso. El objetivo NO es que caminen perfectamente juntos, sino que funcionen juntos sin escalarse. La distancia es una herramienta de regulación emocional, no un fracaso de entrenamiento.
+        </div>
+      </div>
+    `;
+  }
+
   const container = $('weekObjectiveContainer');
   container.innerHTML = `
     <div class="week-objective">
@@ -281,6 +463,7 @@ function renderWeekObjective() {
         <strong>Foco:</strong> ${plan.focus.join(' • ')}
       </p>
     </div>
+    ${educationalContent}
   `;
 }
 
@@ -307,9 +490,10 @@ function renderTasks() {
           <div class="task-title">${escapeHtml(task.title)}</div>
           <div class="task-meta">
             <span class="tag ${task.tag}">${task.tag}</span>
-            ${task.freq === 'daily' ? '<span class="tag">Diaria</span>' : `<span class="tag">Días: ${task.days?.join(',') || 'Custom'}</span>`}
+            <span class="tag daily-tag">${task.day || 'Diaria'}</span>
           </div>
           <div class="task-desc">${escapeHtml(task.desc)}</div>
+          ${task.explanation ? `<div class="task-explanation">💡 <strong>Por qué:</strong> ${escapeHtml(task.explanation)}</div>` : ''}
         </div>
       </div>
       <div class="task-comments">
@@ -446,6 +630,11 @@ function toggleTask(taskId, completed) {
         runAIAnalysis();
       }
     }
+
+    // Celebration
+    if (completed && state.tasks[week].every(t => t.completed)) {
+      triggerConfetti();
+    }
   }
 }
 
@@ -573,11 +762,10 @@ async function localAnalysis() {
   // Extraer todos los comentarios
   const allComments = tasks.flatMap(t => t.comments.map(c => c.text)).join(' ').toLowerCase();
 
-  const summary = `Has completado ${completed} de ${total} tareas (${progress}%). ${
-    progress >= 80 ? 'Excelente progreso!' :
+  const summary = `Has completado ${completed} de ${total} tareas (${progress}%). ${progress >= 80 ? 'Excelente progreso!' :
     progress >= 60 ? 'Buen avance, sigue así.' :
-    'Hay margen de mejora. Intenta ser más consistente.'
-  }`;
+      'Hay margen de mejora. Intenta ser más consistente.'
+    }`;
 
   const suggestions = [];
 
@@ -719,6 +907,106 @@ function saveSettings() {
 
 // ============= EXPORT / IMPORT =============
 
+$('exportBtn').addEventListener('click', () => {
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(state));
+  const downloadAnchorNode = document.createElement('a');
+  downloadAnchorNode.setAttribute("href", dataStr);
+  downloadAnchorNode.setAttribute("download", "oso_ponky_data_" + new Date().toISOString().split('T')[0] + ".json");
+  document.body.appendChild(downloadAnchorNode); // required for firefox
+  downloadAnchorNode.click();
+  downloadAnchorNode.remove();
+});
+
+$('importFile').addEventListener('change', (event) => {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    try {
+      const saved = JSON.parse(e.target.result);
+      if (saved && saved.weeks && saved.tasks) {
+        if (confirm('¿Estás seguro de sobrescribir tus datos actuales con este archivo?')) {
+          state = saved;
+          saveState();
+          render();
+          alert('Datos restaurados correctamente.');
+        }
+      } else {
+        alert('El archivo no parece ser un respaldo válido.');
+      }
+    } catch (err) {
+      alert('Error al leer el archivo: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+});
+
+// ============= CONFETTI =============
+
+function triggerConfetti() {
+  const duration = 3000;
+  const animationEnd = Date.now() + duration;
+  const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+  function randomInRange(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  const interval = setInterval(function () {
+    const timeLeft = animationEnd - Date.now();
+
+    if (timeLeft <= 0) {
+      return clearInterval(interval);
+    }
+
+    const particleCount = 50 * (timeLeft / duration);
+
+    // Simple canvas confetti implementation or usage of library would be here.
+    // Since we don't have the library, we'll create simple falling elements.
+    createConfettiParticle();
+    createConfettiParticle();
+  }, 50);
+}
+
+
+function createConfettiParticle() {
+  const colors = ['#FF9F43', '#27AE60', '#F0DFC5', '#E74C3C', '#F39C12'];
+  const el = document.createElement('div');
+  el.style.position = 'fixed';
+  el.style.width = '10px';
+  el.style.height = '10px';
+  el.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+  el.style.left = Math.random() * 100 + 'vw';
+  el.style.top = '-10px';
+  el.style.zIndex = '9999';
+  el.style.pointerEvents = 'none';
+  el.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+  document.body.appendChild(el);
+
+  const anim = el.animate([
+    { transform: `translate(0, 0) rotate(0deg)`, opacity: 1 },
+    { transform: `translate(${Math.random() * 100 - 50}px, 100vh) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+  ], {
+    duration: Math.random() * 2000 + 1500,
+    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+  });
+
+  anim.onfinish = () => el.remove();
+}
+
+// Modify toggleTask to trigger confetti
+const originalToggleTask = toggleTask; // Valid hook if needed, but easier to modify the function directly.
+// We will assume the toggleTask function is updated separately or we verify it. 
+// Actually, I can overwrite toggleTask if I had access to previous lines.
+// Since I'm appending, I need to make sure `triggerConfetti` is called inside `toggleTask` above. 
+// I will just add a check in the render or update logic if I could.
+// But I can't easily edit the middle of the file in this append-style edit unless I use replace.
+
+// Let's rely on the previous logic calling `runAIAnalysis` on all completion. 
+// I will wrap `toggleTask` to add confetti. 
+
 function exportData() {
   const data = JSON.stringify(state, null, 2);
   const blob = new Blob([data], { type: 'application/json' });
@@ -790,8 +1078,70 @@ $('exportBtn').addEventListener('click', exportData);
 
 $('resetBtn').addEventListener('click', resetData);
 
+// ============= RENDER ILLUSTRATIONS =============
+
+function renderIllustrations() {
+  // Avatares del header
+  const osoHeader = $('oso-avatar-header');
+  const ponkyHeader = $('ponky-avatar-header');
+
+  if (osoHeader && typeof illustrations !== 'undefined') {
+    osoHeader.innerHTML = illustrations.oso;
+  }
+  if (ponkyHeader && typeof illustrations !== 'undefined') {
+    ponkyHeader.innerHTML = illustrations.ponky;
+  }
+}
+
+// ============= MENSAJE DE BIENVENIDA =============
+
+function showWelcomeMessage() {
+  // Verificar si es la primera vez
+  if (!localStorage.getItem('welcomeShown')) {
+    setTimeout(() => {
+      const message = `
+🐕 ¡Bienvenid@ al Plan de Entrenamiento Oso & Ponky! 🐕
+
+Este plan de 4 semanas está diseñado para:
+• Reducir el control de recursos de Oso
+• Romper la cadena emocional Oso → Ponky
+• Bajar la ansiedad por separación
+
+📚 CÓMO USAR LA APP:
+
+1️⃣ Carga el plan completo
+   Toca "📚 Cargar plan completo" abajo
+
+2️⃣ Navega por semanas
+   Cada semana tiene un objetivo específico
+
+3️⃣ Marca tareas diarias
+   Toca ☐ para marcar como completada
+
+4️⃣ Agrega comentarios
+   Describe qué observaste en cada tarea
+
+5️⃣ Lee las cajas educativas 📚
+   Explican el "por qué" de cada técnica
+
+💡 CONSEJO: Lee las explicaciones en las cajas amarillas. Entender el fundamento te ayudará a aplicar mejor las técnicas.
+
+¡Mucho éxito con Oso y Ponky! 🎯
+      `.trim();
+
+      if (confirm(message + '\n\n¿Empezamos? Toca OK para cargar el plan.')) {
+        loadPlan();
+      }
+
+      localStorage.setItem('welcomeShown', 'true');
+    }, 1000);
+  }
+}
+
 // ============= INIT =============
 
 initializeWeeks();
 saveState();
 render();
+renderIllustrations();
+showWelcomeMessage();

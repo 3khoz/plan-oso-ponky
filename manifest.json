@@ -4,8 +4,8 @@
   "description": "Plan de entrenamiento diario para Oso y Ponky",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#0b0f14",
-  "theme_color": "#0b0f14",
+  "background_color": "#F5E8D8",
+  "theme_color": "#5A8B6F",
   "orientation": "portrait",
   "icons": [
     {
